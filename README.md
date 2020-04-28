@@ -1,8 +1,35 @@
 # DslItem
+基于`DslAdapter`的`DslAdapterItem`库, 挑选能用的, 把界面拼起来.
+
+请先了解[DslAdapter](https://github.com/angcyo/DslAdapter).
+
 针对[DslAdapter](https://github.com/angcyo/DslAdapter)库, 编写的一些常用的`DslAdapterItem`, 欢迎PR, 欢迎提出想要的`Item`建议.
 
 ![](https://img.shields.io/badge/License-MIT-EA660C) ![](https://img.shields.io/badge/Api-11+-FA0730) ![](https://img.shields.io/badge/AndroidX-yes-0A803C)
 ![](https://img.shields.io/badge/Kotlin-yes-B0F9F9)
+
+# 愿望
+
+安卓界面的编写形式应该是`Item+Item+Item`,轻松+高度可复用:
+
+如下形式:
+
+```kotlin
+renderAdapter{
+    头部Item()
+    轮播图Item()
+    列表Item()
+    列表Item()
+    列表Item()
+    ...
+    尾部Item()
+    加载更多Item()
+}
+```
+
+借助[DslAdapter](https://github.com/angcyo/DslAdapter)库,再结合本库,把界面`+`起来.
+
+希望广大同仁 能与我共同维护此库 欢迎PR.
 
 
 ![](https://raw.githubusercontent.com/angcyo/DslItem/master/png/item.png)
