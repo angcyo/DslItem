@@ -5,7 +5,7 @@
 
 针对[DslAdapter](https://github.com/angcyo/DslAdapter)库, 编写的一些常用的`DslAdapterItem`, 欢迎PR, 欢迎提出想要的`Item`建议.
 
-![](https://img.shields.io/badge/License-MIT-EA660C) ![](https://img.shields.io/badge/Api-11+-FA0730) ![](https://img.shields.io/badge/AndroidX-yes-0A803C)
+![](https://img.shields.io/badge/License-MIT-EA660C) ![](https://img.shields.io/badge/Api-16+-FA0730) ![](https://img.shields.io/badge/AndroidX-yes-0A803C)
 ![](https://img.shields.io/badge/Kotlin-yes-B0F9F9)
 
 # 愿望
