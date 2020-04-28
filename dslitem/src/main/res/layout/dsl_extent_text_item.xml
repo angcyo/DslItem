@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center_vertical|right"
+    tools:background="@color/transparent10">
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/lib_dark_text_view"
+        style="@style/LibSubTextStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical|right"
+        android:drawablePadding="@dimen/lib_drawable_padding"
+        android:paddingTop="@dimen/lib_ldpi"
+        android:paddingRight="@dimen/lib_xhdpi"
+        android:paddingBottom="@dimen/lib_ldpi"
+        tools:r_badge_text="99"
+        tools:r_draw_badge="true"
+        tools:text="发现新版本" />
+</FrameLayout>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/lib_item_root_layout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/lib_white">
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/lib_label_view"
+        style="@style/ItemLabelStyle"
+        android:minHeight="0dp"
+        android:paddingTop="@dimen/lib_min_padding"
+        android:paddingBottom="@dimen/lib_min_padding"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0"
+        tools:text="Label" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/lib_text_view"
+        style="@style/ItemEditStyle"
+        android:layout_width="0dp"
+        android:gravity="top"
+        android:minHeight="0dp"
+        android:paddingTop="@dimen/lib_min_padding"
+        android:paddingBottom="@dimen/lib_min_padding"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toRightOf="@id/lib_label_view"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

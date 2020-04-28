@@ -1,0 +1,12 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.angcyo.item">
+
+    <application>
+
+        <!--免入侵获取Content-->
+        <provider
+            android:name=".base.LibInitProvider"
+            android:authorities="${applicationId}.init"
+            android:exported="false" />
+    </application>
+</manifest>

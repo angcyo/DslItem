@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.angcyo.widget.recycler.RecyclerBottomLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/lib_item_root_layout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingLeft="@dimen/lib_padding_left"
+    android:paddingTop="@dimen/lib_xxxhdpi"
+    android:paddingRight="@dimen/lib_padding_left"
+    android:paddingBottom="@dimen/lib_xxxhdpi">
+
+    <com.angcyo.widget.DslButton
+        android:id="@+id/lib_button"
+        style="@style/DefaultButtonMinStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:minHeight="45dp"
+        android:textColor="@color/text_primary_color"
+        app:button_gradient_colors=""
+        app:button_solid_color="@color/lib_white"
+        tools:text="退出当前登录" />
+
+</com.angcyo.widget.recycler.RecyclerBottomLayout>

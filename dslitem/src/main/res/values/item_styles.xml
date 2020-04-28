@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="lib_item_label_min_width">75dp</dimen>
+
+    <style name="ItemLabelStyle" parent="LibSubTextStyle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:minWidth">@dimen/lib_item_label_min_width</item>
+        <item name="android:paddingLeft">@dimen/lib_padding_left</item>
+        <item name="android:paddingTop">@dimen/lib_xhdpi</item>
+        <item name="android:paddingBottom">@dimen/lib_xhdpi</item>
+        <item name="android:paddingRight">0dp</item>
+        <item name="android:textSize">@dimen/text_body_size</item>
+    </style>
+
+    <style name="ItemEditStyle" parent="LibBodyTextStyle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:paddingLeft">@dimen/lib_padding_left</item>
+        <item name="android:paddingRight">@dimen/lib_padding_right</item>
+        <item name="android:paddingTop">@dimen/lib_xhdpi</item>
+        <item name="android:paddingBottom">@dimen/lib_xhdpi</item>
+        <item name="android:minHeight">@dimen/lib_item_min_height</item>
+        <item name="android:background">@null</item>
+    </style>
+
+    <style name="ItemRightIcoStyle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:padding">@dimen/lib_padding_right</item>
+        <item name="android:background">@drawable/lib_bg2_selector</item>
+        <item name="android:clickable">false</item>
+    </style>
+</resources>

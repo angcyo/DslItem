@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/lib_item_root_layout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/lib_white">
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/lib_edit_view"
+        style="@style/ItemEditStyle"
+        android:layout_width="match_parent"
+        android:background="@drawable/lib_bottom_line_selector"
+        tools:hint="请输入..." />
+
+</FrameLayout>
