@@ -13,6 +13,13 @@ open class DslBottomItem : DslAdapterItem() {
 
     /**显示的文本*/
     var itemText: CharSequence? = null
+        set(value) {
+            field = value
+            itemTextStyle.text = value
+        }
+
+    /**统一样式配置*/
+    var itemTextStyle = TextStyleConfig()
 
     init {
         itemLayoutId = R.layout.dsl_bottom_item
@@ -26,10 +33,16 @@ open class DslBottomItem : DslAdapterItem() {
     ) {
         super.onItemBind(itemHolder, itemPosition, adapterItem, payloads)
 
-        itemHolder.tv(R.id.lib_text_view)?.text = itemText
+        itemHolder.tv(R.id.lib_text_view)?.apply {
+            itemTextStyle.updateStyle(this)
+        }
     }
 
     override fun _initItemSize(itemHolder: DslViewHolder) {
         //super._initItemSize(itemHolder)
+    }
+
+    open fun configTextStyle(action: TextStyleConfig.() -> Unit) {
+        itemTextStyle.action()
     }
 }

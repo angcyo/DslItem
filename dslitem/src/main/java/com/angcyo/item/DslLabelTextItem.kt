@@ -12,6 +12,7 @@ import com.angcyo.dsladapter.DslViewHolder
  */
 open class DslLabelTextItem : DslBaseLabelItem() {
 
+    /**显示的文本*/
     var itemText: CharSequence? = null
         set(value) {
             field = value
