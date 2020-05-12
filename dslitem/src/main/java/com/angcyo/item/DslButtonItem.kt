@@ -160,6 +160,12 @@ open class ButtonStyleConfig : TextStyleConfig() {
         textColor = styleThemeTextColor
     }
 
+    /**使用渐变样式*/
+    fun gradientStyle(gradientStartColor: Int, gradientEndColor: Int = gradientStartColor) {
+        themeStyle()
+        styleThemeColors = intArrayOf(gradientStartColor, gradientEndColor)
+    }
+
     /**填充颜色的样式*/
     fun solidStyle() {
         style = BUTTON_STYLE_SOLID
