@@ -53,7 +53,7 @@ allprojects {
 
 ```kotlin
 dependencies {
-    implementation 'com.github.angcyo:DslItem:1.0.8'
+    implementation 'com.github.angcyo:DslItem:1.0.9'
 }
 ```
 
