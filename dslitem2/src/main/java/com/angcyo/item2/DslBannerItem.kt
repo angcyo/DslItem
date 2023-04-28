@@ -1,5 +1,6 @@
 package com.angcyo.item2
 
+import android.widget.LinearLayout
 import androidx.recyclerview.widget.RecyclerView
 import com.angcyo.dsladapter.DslAdapterItem
 import com.angcyo.dsladapter.DslViewHolder
@@ -33,6 +34,8 @@ open class DslBannerItem : DslNestedRecyclerItem() {
                 maxAlpha = 1f
                 minAlpha = 1f
             }
+
+        itemHeight = LinearLayout.LayoutParams.WRAP_CONTENT
     }
 
     val pagerLayoutManager: ViewPagerLayoutManager?
@@ -46,11 +49,7 @@ open class DslBannerItem : DslNestedRecyclerItem() {
         payloads: List<Any>
     ) {
         super.onBindNestedRecyclerView(
-            recyclerView,
-            itemHolder,
-            itemPosition,
-            adapterItem,
-            payloads
+            recyclerView, itemHolder, itemPosition, adapterItem, payloads
         )
 
         val drawableIndicator: DrawableIndicator? = itemHolder.v(R.id.lib_drawable_indicator)

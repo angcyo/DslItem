@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <attr name="r_draw_border" format="boolean" />
+    <attr name="r_border_width" format="dimension" />
+    <attr name="r_border_round" format="dimension" />
+    <attr name="r_border_color" format="color" />
+
+    <declare-styleable name="BorderView">
+        <attr name="r_draw_border" />
+        <attr name="r_border_width" />
+        <attr name="r_border_round" />
+        <attr name="r_border_color" />
+    </declare-styleable>
+</resources>

@@ -1,8 +1,12 @@
 package com.angcyo.item
 
 import android.content.Context
+import android.graphics.Canvas
 import android.graphics.Paint
+import android.graphics.Rect
+import android.graphics.RectF
 import android.graphics.drawable.Drawable
+import android.os.Build
 import android.os.Handler
 import android.os.Looper
 import android.text.InputFilter
@@ -87,10 +91,7 @@ fun TextView.setLeftIco(id: Int) {
 fun TextView.setLeftIco(drawable: Drawable?) {
     val compoundDrawables: Array<Drawable?> = compoundDrawables
     setCompoundDrawablesWithIntrinsicBounds(
-        drawable,
-        compoundDrawables[1],
-        compoundDrawables[2],
-        compoundDrawables[3]
+        drawable, compoundDrawables[1], compoundDrawables[2], compoundDrawables[3]
     )
 }
 
@@ -101,10 +102,7 @@ fun TextView.setRightIco(@DrawableRes id: Int) {
 fun TextView.setRightIco(drawable: Drawable?) {
     val compoundDrawables: Array<Drawable?> = compoundDrawables
     setCompoundDrawablesWithIntrinsicBounds(
-        compoundDrawables[0],
-        compoundDrawables[1],
-        drawable,
-        compoundDrawables[3]
+        compoundDrawables[0], compoundDrawables[1], drawable, compoundDrawables[3]
     )
 }
 
@@ -163,8 +161,7 @@ fun TextView?.string(trim: Boolean = true): String {
 
 /**只要文本改变就通知*/
 fun EditText.onTextChange(
-    defaultText: CharSequence? = string(),
-    shakeDelay: Long = -1L,//去频限制, 负数表示不开启
+    defaultText: CharSequence? = string(), shakeDelay: Long = -1L,//去频限制, 负数表示不开启
     listener: (CharSequence) -> Unit
 ) {
     addTextChangedListener(object : SingleTextWatcher() {
@@ -208,8 +205,7 @@ fun Any?.getMember(member: String): Any? {
 }
 
 fun Any?.getMember(
-    cls: Class<*>,
-    member: String
+    cls: Class<*>, member: String
 ): Any? {
     var result: Any? = null
     try {
@@ -415,8 +411,31 @@ fun EditText.restoreSelection(start: Int, stop: Int) {
     }
 }
 
-fun Collection<*>?.size() = this?.size ?: 0
+fun View.save(canvas: Canvas, paint: Paint? = null): Int {
+    return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+        canvas.saveLayer(0f, 0f, width.toFloat(), height.toFloat(), paint)
+    } else {
+        canvas.saveLayer(
+            0f, 0f, width.toFloat(), height.toFloat(), paint, Canvas.ALL_SAVE_FLAG
+        )
+    }
+}
 
+fun View.viewRect(result: RectF = RectF()): RectF {
+    result.set(0f, 0f, measuredWidth.toFloat(), measuredHeight.toFloat())
+    return result
+}
+
+fun View.viewRect(result: Rect = Rect()): Rect {
+    result.set(0, 0, measuredWidth, measuredHeight)
+    return result
+}
+
+fun View.drawRect(rect: Rect) {
+    rect.set(paddingLeft, paddingTop, measuredWidth - paddingRight, measuredHeight - paddingBottom)
+}
+
+fun Collection<*>?.size() = this?.size ?: 0
 
 /**判断2个列表中的数据是否改变过*/
 fun <T> Collection<T>?.isChange(other: List<T>?): Boolean {

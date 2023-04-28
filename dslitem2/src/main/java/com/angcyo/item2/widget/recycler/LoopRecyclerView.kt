@@ -4,7 +4,6 @@ import android.content.Context
 import android.util.AttributeSet
 import android.view.MotionEvent
 import android.view.View
-import com.angcyo.github.widget.recycler.LoopSnapHelper
 import com.angcyo.item2.R
 import com.angcyo.widget.recycler.DslRecyclerView
 import com.leochuan.AutoPlaySnapHelper

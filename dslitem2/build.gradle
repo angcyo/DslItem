@@ -23,4 +23,7 @@ dependencies {
     //https://github.com/angcyo/ViewPagerLayoutManager
     //api 'rouchuan.viewpagerlayoutmanager:viewpagerlayoutmanager:2.0.22'
     api 'com.github.angcyo:ViewPagerLayoutManager:2.1.3'
+
+    //https://mvnrepository.com/artifact/androidx.appcompat/appcompat
+    implementation 'androidx.appcompat:appcompat:1.6.1'
 }

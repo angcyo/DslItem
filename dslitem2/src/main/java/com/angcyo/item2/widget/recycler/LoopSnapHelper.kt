@@ -1,10 +1,10 @@
-package com.angcyo.github.widget.recycler
+package com.angcyo.item2.widget.recycler
 
 import android.view.animation.DecelerateInterpolator
 import android.view.animation.Interpolator
 import androidx.recyclerview.widget.RecyclerView
 import com.angcyo.dsladapter.DslAdapter
-import com.angcyo.github.dslitem.ILoopAdapterItem
+import com.angcyo.item2.ILoopAdapterItem
 import com.leochuan.AutoPlaySnapHelper
 import com.leochuan.ViewPagerLayoutManager
 
@@ -15,8 +15,7 @@ import com.leochuan.ViewPagerLayoutManager
  * @date 2020/03/18
  * Copyright (c) 2019 ShenZhen O&M Cloud Co., Ltd. All rights reserved.
  */
-class LoopSnapHelper(val interval: Int, direction: Int) :
-    AutoPlaySnapHelper(interval, direction) {
+class LoopSnapHelper(val interval: Int, direction: Int) : AutoPlaySnapHelper(interval, direction) {
 
     var loopInterpolator: Interpolator? = DecelerateInterpolator()
 
