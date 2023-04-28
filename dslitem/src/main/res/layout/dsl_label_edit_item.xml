@@ -20,18 +20,38 @@
         style="@style/ItemEditStyle"
         android:layout_width="0dp"
         app:layout_constraintLeft_toRightOf="@id/lib_label_view"
-        app:layout_constraintRight_toLeftOf="@id/lib_right_ico_view"
+        app:layout_constraintRight_toLeftOf="@id/lib_right_wrap_layout"
         tools:hint="请输入..."
         tools:text="文本" />
 
-    <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/lib_right_ico_view"
-        style="@style/ItemRightIcoStyle"
-        android:visibility="visible"
+    <FrameLayout
+        android:id="@+id/lib_right_wrap_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toRightOf="@id/lib_edit_view"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/lib_icon_edit_tip" />
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/lib_right_ico_view"
+            style="@style/ItemRightIcoStyle"
+            android:layout_gravity="center"
+            android:visibility="gone"
+            app:srcCompat="@drawable/lib_icon_edit_tip"
+            tools:visibility="gone" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/lib_right_text_view"
+            style="@style/ItemLabelStyle"
+            android:layout_gravity="center"
+            android:background="@drawable/lib_bg2_selector"
+            android:clickable="false"
+            android:minWidth="0dp"
+            android:padding="@dimen/lib_padding_right"
+            android:visibility="gone"
+            tools:text="m" />
+
+    </FrameLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,7 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
 
     <dimen name="lib_item_label_min_width">75dp</dimen>
+    <dimen name="lib_dpi">2dp</dimen>
+    <dimen name="lib_border_little_size">1dp</dimen>
+
+    <!--tab栏的高度-->
+    <dimen name="lib_tab_height">50dp</dimen>
+    <!--tab栏图标的高度-->
+    <dimen name="lib_tab_icon_size">20dp</dimen>
+    <!--tab栏文本的大小-->
+    <dimen name="lib_tab_text_size">@dimen/text_assist_size</dimen>
+    <!--按钮类型的图标大小-->
+    <dimen name="lib_button_icon_size">50dp</dimen>
+
+    <color name="lib_icon_color">#C3C7CF</color>
 
     <style name="ItemLabelStyle" parent="LibSubTextStyle">
         <item name="android:layout_width">wrap_content</item>
@@ -32,4 +45,20 @@
         <item name="android:background">@drawable/lib_bg2_selector</item>
         <item name="android:clickable">false</item>
     </style>
+
+    <!--内部滚动条样式-->
+    <style name="LibInnerScrollStyle">
+        <item name="android:nestedScrollingEnabled" tools:targetApi="lollipop">false</item>
+        <item name="android:scrollbarSize">0dp</item>
+        <item name="android:scrollbarThumbVertical">@null</item>
+        <item name="android:scrollbarTrackVertical">@null</item>
+        <item name="android:scrollbarThumbHorizontal">@null</item>
+        <item name="android:scrollbarTrackHorizontal">@null</item>
+        <item name="android:overScrollMode">never</item>
+    </style>
+
+    <style name="LibInnerRecyclerViewStyle" parent="LibInnerScrollStyle">
+        <item name="r_layout_manager">v</item>
+    </style>
+
 </resources>

@@ -4,7 +4,17 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.angcyo.dsladapter.initDslAdapter
-import com.angcyo.item.*
+import com.angcyo.item.DslBaseEditItem
+import com.angcyo.item.DslBaseInfoItem
+import com.angcyo.item.DslBaseLabelItem
+import com.angcyo.item.DslButtonItem
+import com.angcyo.item.DslGridItem
+import com.angcyo.item.DslLabelEditItem
+import com.angcyo.item.DslLabelTextItem
+import com.angcyo.item.DslSwitchInfoItem
+import com.angcyo.item.DslTextInfoItem
+import com.angcyo.item.DslTextItem
+import com.angcyo.item.style.itemEditText
 
 class MainActivity : AppCompatActivity() {
 
@@ -16,8 +26,7 @@ class MainActivity : AppCompatActivity() {
             render {
                 DslBaseEditItem()() {
                     itemEditText = this::class.java.simpleName
-                    _lastEditSelectionStart = itemEditText?.length ?: -1
-
+                    editItemConfig._lastEditSelectionStart = itemEditText?.length ?: -1
                     configEditTextStyle {
                         hint = "请输入..."
                     }
@@ -62,7 +71,7 @@ class MainActivity : AppCompatActivity() {
                 DslLabelEditItem()() {
                     itemLabelText = "Label"
                     itemEditText = this::class.java.simpleName
-                    _lastEditSelectionStart = itemEditText?.length ?: -1
+                    editItemConfig._lastEditSelectionStart = itemEditText?.length ?: -1
 
                     configEditTextStyle {
                         hint = "请输入..."

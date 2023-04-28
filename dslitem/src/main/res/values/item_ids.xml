@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="lib_badge_view" type="id" />
+    <item name="lib_body_view" type="id" />
+    <item name="lib_flow_layout" type="id" />
+    <item name="lib_check_view" type="id" />
+    <item name="lib_des_view" type="id" />
+</resources>

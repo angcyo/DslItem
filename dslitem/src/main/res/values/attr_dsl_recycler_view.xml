@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="DslRecyclerView">
+        <attr name="r_layout_manager" format="string" />
+        <attr name="r_enable_focus_transition" format="boolean" />
+    </declare-styleable>
+</resources>

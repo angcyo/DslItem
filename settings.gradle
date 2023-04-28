@@ -1,3 +1,4 @@
 rootProject.name='DslItem'
 include ':demo'
 include ':dslitem'
+include ':dslitem2'

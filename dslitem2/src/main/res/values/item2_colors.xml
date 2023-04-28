@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="lib_indicator_normal_color">#4D727272</color>
+    <color name="lib_indicator_focus_color">@color/colorAccent</color>
+</resources>

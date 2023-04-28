@@ -1,0 +1,26 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+
+android {
+    compileSdk Integer.parseInt(C_SDK)
+
+    defaultConfig {
+        vectorDrawables.useSupportLibrary = true
+
+        minSdk Integer.parseInt(M_SDK)
+        targetSdk Integer.parseInt(T_SDK)
+
+        consumerProguardFiles 'consumer-rules.pro'
+    }
+    namespace 'com.angcyo.item2'
+}
+
+dependencies {
+    api project(":dslitem")
+
+    //https://jcenter.bintray.com/rouchuan/viewpagerlayoutmanager/viewpagerlayoutmanager/
+    //https://github.com/leochuan/ViewPagerLayoutManager
+    //https://github.com/angcyo/ViewPagerLayoutManager
+    //api 'rouchuan.viewpagerlayoutmanager:viewpagerlayoutmanager:2.0.22'
+    api 'com.github.angcyo:ViewPagerLayoutManager:2.1.3'
+}

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--Badge 角标相关属性-->
+    <!--是否绘制角标-->
+    <attr name="r_draw_badge" format="boolean" />
+    <!--角标的背景填充颜色-->
+    <attr name="r_badge_solid_color" format="color" />
+    <!--角标文本的颜色-->
+    <attr name="r_badge_text_color" format="color" />
+    <!--圆点状态时的半径大小-->
+    <attr name="r_badge_circle_radius" format="dimension" />
+    <!--角标的圆角半径-->
+    <attr name="r_badge_radius" format="dimension" />
+    <!--角标重力-->
+    <attr name="r_badge_gravity" format="flags">
+        <flag name="top" value="0x30" />
+        <flag name="bottom" value="0x50" />
+        <flag name="left" value="0x03" />
+        <flag name="right" value="0x05" />
+        <flag name="center_vertical" value="0x10" />
+        <flag name="center_horizontal" value="0x01" />
+        <flag name="center" value="0x11" />
+    </attr>
+    <!--x轴方向的偏移量, 会根据[Gravity]自动取负值-->
+    <attr name="r_badge_offset_x" format="dimension" />
+    <!--同上-->
+    <attr name="r_badge_offset_y" format="dimension" />
+    <!--参考[View]的padding属性-->
+    <attr name="r_badge_padding_left" format="dimension" />
+    <attr name="r_badge_padding_right" format="dimension" />
+    <attr name="r_badge_padding_top" format="dimension" />
+    <attr name="r_badge_padding_bottom" format="dimension" />
+    <!--角标的文本内容, 多用于xml预览-->
+    <attr name="r_badge_text" format="string" />
+    <!--角标的文本字体大小-->
+    <attr name="r_badge_text_size" format="dimension" />
+    <!--角标的背景-->
+    <attr name="r_badge_bg_drawable" format="reference" />
+    <attr name="r_badge_text_offset_x" format="dimension" />
+    <attr name="r_badge_text_offset_y" format="dimension" />
+    <attr name="r_badge_circle_offset_x" format="dimension" />
+    <attr name="r_badge_circle_offset_y" format="dimension" />
+    <!--end...-->
+
+    <declare-styleable name="DslAttrBadgeDrawable">
+        <attr name="r_draw_badge" />
+        <attr name="r_badge_solid_color" />
+        <attr name="r_badge_text_color" />
+        <attr name="r_badge_circle_radius" />
+        <attr name="r_badge_radius" />
+        <attr name="r_badge_gravity" />
+        <attr name="r_badge_offset_x" />
+        <attr name="r_badge_offset_y" />
+        <attr name="r_badge_circle_offset_x" />
+        <attr name="r_badge_circle_offset_y" />
+        <attr name="r_badge_padding_left" />
+        <attr name="r_badge_padding_right" />
+        <attr name="r_badge_padding_top" />
+        <attr name="r_badge_padding_bottom" />
+        <attr name="r_badge_text" />
+        <attr name="r_badge_text_size" />
+        <attr name="r_badge_bg_drawable" />
+        <attr name="r_badge_text_offset_x" />
+        <attr name="r_badge_text_offset_y" />
+    </declare-styleable>
+
+</resources>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.angcyo.widget.recycler.DslRecyclerView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/lib_nested_recycler_view"
+    style="@style/LibInnerRecyclerViewStyle"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content" />

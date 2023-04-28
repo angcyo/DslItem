@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="DrawableIndicator">
+        <attr name="r_indicator_size" format="dimension" />
+        <attr name="r_indicator_size_focus" format="dimension" />
+        <attr name="r_indicator_space" format="dimension" />
+        <attr name="r_indicator_drawable" format="reference" />
+        <attr name="r_indicator_drawable_focus" format="reference" />
+    </declare-styleable>
+</resources>

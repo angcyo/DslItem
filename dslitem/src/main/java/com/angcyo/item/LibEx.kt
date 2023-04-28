@@ -9,18 +9,28 @@ import android.text.InputFilter
 import android.text.TextPaint
 import android.text.TextUtils
 import android.view.LayoutInflater
+import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
+import android.widget.OverScroller
 import android.widget.TextView
 import androidx.annotation.ColorInt
 import androidx.annotation.ColorRes
+import androidx.annotation.DimenRes
 import androidx.annotation.DrawableRes
+import androidx.annotation.IdRes
 import androidx.annotation.LayoutRes
+import androidx.annotation.Px
 import androidx.core.content.ContextCompat
+import androidx.core.widget.ScrollerCompat
+import androidx.core.widget.TextViewCompat
+import com.angcyo.dsladapter.DslViewHolder
 import com.angcyo.dsladapter.L
+import com.angcyo.dsladapter.internal.ThrottleClickListener
 import com.angcyo.item.base.LibInitProvider
+import com.angcyo.widget.DslButton
 import com.angcyo.widget.edit.SingleTextWatcher
 import com.angcyo.widget.span.undefined_int
 import java.util.*
@@ -51,6 +61,17 @@ fun Paint.addPaintFlags(add: Boolean, flat: Int) {
         flags.remove(flat)
     }
 }
+
+/**文本的宽度*/
+fun Paint.textWidth(text: String?): Float {
+    if (text == null) {
+        return 0f
+    }
+    return measureText(text)
+}
+
+/**文本的高度*/
+fun Paint?.textHeight(): Float = this?.run { descent() - ascent() } ?: 0f
 
 /**
  * 设置是否加粗文本
@@ -179,6 +200,13 @@ fun EditText.onTextChange(
     })
 }
 
+/**
+ * 从一个对象中, 获取指定的成员对象
+ */
+fun Any?.getMember(member: String): Any? {
+    return this?.run { this.getMember(this.javaClass, member) }
+}
+
 fun Any?.getMember(
     cls: Class<*>,
     member: String
@@ -192,6 +220,28 @@ fun Any?.getMember(
         //L.i("错误:" + cls.getSimpleName() + " ->" + e.getMessage());
     }
     return result
+}
+
+fun Any?.getCurrVelocity(): Float {
+    return when (this) {
+        is OverScroller -> currVelocity
+        is ScrollerCompat -> currVelocity
+        else -> {
+            0f
+        }
+    }
+}
+
+fun MotionEvent.isTouchDown(): Boolean {
+    return actionMasked == MotionEvent.ACTION_DOWN
+}
+
+fun MotionEvent.isTouchFinish(): Boolean {
+    return actionMasked == MotionEvent.ACTION_UP || actionMasked == MotionEvent.ACTION_CANCEL
+}
+
+fun MotionEvent.isTouchMove(): Boolean {
+    return actionMasked == MotionEvent.ACTION_MOVE
 }
 
 /**清空所有[TextWatcher]*/
@@ -218,6 +268,14 @@ fun TextView?.setMaxLine(maxLine: Int = 1) {
     }
 }
 
+/**设置文本, 并且将光标至于文本最后面*/
+fun TextView.setInputText(text: CharSequence? = null, selection: Boolean = true) {
+    setText(text)
+    if (selection && this is EditText) {
+        setSelection(min(text?.length ?: 0, getText().length))
+    }
+}
+
 fun View?.padding(p: Int) {
     this?.setPadding(p, p, p, p)
 }
@@ -225,6 +283,21 @@ fun View?.padding(p: Int) {
 @ColorInt
 fun _color(@ColorRes id: Int): Int {
     return getColor(id)
+}
+
+@Px
+fun _dimen(@DimenRes id: Int, context: Context = LibInitProvider.contentProvider): Int {
+    return getDimen(id, context)
+}
+
+@Px
+fun getDimen(@DimenRes id: Int, context: Context = LibInitProvider.contentProvider): Int {
+    return context.getDimen(id)
+}
+
+@Px
+fun Context.getDimen(@DimenRes id: Int): Int {
+    return resources.getDimensionPixelOffset(id)
 }
 
 @ColorInt
@@ -238,6 +311,33 @@ fun View?.visible(value: Boolean = true) {
 
 fun View?.gone(value: Boolean = true) {
     this?.visibility = if (value) View.GONE else View.VISIBLE
+}
+
+fun Int.getSize(): Int {
+    return View.MeasureSpec.getSize(this)
+}
+
+fun Int.getMode(): Int {
+    return View.MeasureSpec.getMode(this)
+}
+
+/**match_parent*/
+fun Int.isExactly(): Boolean {
+    return getMode() == View.MeasureSpec.EXACTLY
+}
+
+/**wrap_content*/
+fun Int.isAtMost(): Boolean {
+    return getMode() == View.MeasureSpec.AT_MOST
+}
+
+fun Int.isUnspecified(): Boolean {
+    return getMode() == View.MeasureSpec.UNSPECIFIED
+}
+
+/**未指定大小*/
+fun Int.isNotSpecified(): Boolean {
+    return isAtMost() || isUnspecified()
 }
 
 /**点击事件*/
@@ -268,6 +368,29 @@ fun TextView.addFilter(filter: InputFilter) {
     filters = newFilters
 }
 
+/**移除指定[InputFilter]*/
+fun TextView.removeFilter(predicate: InputFilter.() -> Boolean) {
+    val oldFilters = filters
+    val removeList = mutableListOf<InputFilter>()
+    oldFilters.forEach {
+        if (it.predicate()) {
+            removeList.add(it)
+        }
+    }
+    if (removeList.isEmpty()) {
+        return
+    }
+    val list = oldFilters.toMutableList().apply {
+        removeAll(removeList)
+    }
+    filters = list.toTypedArray()
+}
+
+fun TextView.leftIco() = TextViewCompat.getCompoundDrawablesRelative(this)[0]
+fun TextView.topIco() = TextViewCompat.getCompoundDrawablesRelative(this)[1]
+fun TextView.rightIco() = TextViewCompat.getCompoundDrawablesRelative(this)[2]
+fun TextView.bottomIco() = TextViewCompat.getCompoundDrawablesRelative(this)[3]
+
 /**恢复选中范围*/
 fun EditText.restoreSelection(start: Int, stop: Int) {
     val length = text.length
@@ -291,3 +414,49 @@ fun EditText.restoreSelection(start: Int, stop: Int) {
         setSelection(_start)
     }
 }
+
+fun Collection<*>?.size() = this?.size ?: 0
+
+
+/**判断2个列表中的数据是否改变过*/
+fun <T> Collection<T>?.isChange(other: List<T>?): Boolean {
+    if (this.size() != other.size()) {
+        return true
+    }
+    this?.forEachIndexed { index, t ->
+        if (t != other?.getOrNull(index)) {
+            return true
+        }
+    }
+    return false
+}
+
+fun DslViewHolder.button(@IdRes id: Int): DslButton? = v(id)
+
+fun Any?.string(def: CharSequence = ""): CharSequence {
+    return when {
+        this == null -> return def
+        this is TextView -> text ?: def
+        this is CharSequence -> this
+        else -> this.toString()
+    }
+}
+
+fun Any.toStr(): String = when (this) {
+    is String -> this
+    else -> toString()
+}
+
+/**点击事件节流处理*/
+fun View?.throttleClickIt(action: (View) -> Unit) {
+    this?.setOnClickListener(ThrottleClickListener(action = action))
+}
+
+val View.drawLeft get() = paddingLeft
+val View.drawTop get() = paddingTop
+val View.drawRight get() = measuredWidth - paddingRight
+val View.drawBottom get() = measuredHeight - paddingBottom
+val View.drawWidth get() = drawRight - drawLeft
+val View.drawHeight get() = drawBottom - drawTop
+val View.drawCenterX get() = drawLeft + drawWidth / 2
+val View.drawCenterY get() = drawTop + drawHeight / 2
