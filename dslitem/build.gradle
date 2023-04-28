@@ -2,27 +2,37 @@ apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 
 android {
-    compileSdkVersion 32
+    compileSdk 33
 
     defaultConfig {
         vectorDrawables.useSupportLibrary = true
 
         minSdkVersion 16
-        targetSdkVersion 32
-        versionCode 1
-        versionName "1.0"
+        targetSdkVersion 33
 
         consumerProguardFiles 'consumer-rules.pro'
     }
+    namespace 'com.angcyo.item'
 }
 
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
-    implementation 'androidx.appcompat:appcompat:1.4.1'
 
+    //https://mvnrepository.com/artifact/androidx.appcompat/appcompat
+    implementation 'androidx.appcompat:appcompat:1.6.1'
+
+    //https://mvnrepository.com/artifact/androidx.constraintlayout/constraintlayout
     api 'androidx.constraintlayout:constraintlayout:2.1.4'
-    api 'androidx.recyclerview:recyclerview:1.2.1'
+
+    //https://mvnrepository.com/artifact/androidx.recyclerview/recyclerview
+    api 'androidx.recyclerview:recyclerview:1.3.0'
+
+    //https://github.com/angcyo/DslAdapter
     api 'com.github.angcyo:DslAdapter:5.2.0'
-    api 'com.github.angcyo:DslSpan:1.0.1'
+
+    //https://github.com/angcyo/DslSpan
+    api 'com.github.angcyo:DslSpan:1.1.0'
+
+    //https://github.com/angcyo/DslButton
     api 'com.github.angcyo:DslButton:1.2.0'
 }
